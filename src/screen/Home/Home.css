@@ -1,0 +1,52 @@
+.landing-page{
+    background-color: #dfe9ed;
+}
+
+.heading-1{
+    color:#1385ae;
+    font-size: 1.7em;
+    font-weight: 700;
+    margin: 25px 0px;
+}
+
+.heading-2{
+    color:#000000;
+    font-size: 2.3em;
+    font-weight: 700;
+}
+
+.heading-3{
+    color:#000000;
+    font-size: 2.3em;
+    font-weight: 500;
+}
+
+.batch{
+    /* background-color: #1385ae; */
+    padding: 10px 10px;
+    border-radius:15px;
+    /* color: #ff7300; */
+}
+
+.btn-1{
+    background-color: #ff7300;
+    color: white;
+    font-weight: 500;
+    border-radius: 10px;
+    width: 40%;
+    padding: 15px;
+    font-size: 18px;
+    margin: 10% 10%;
+}
+.icon{
+    height: 80px;
+    width: 80px;
+}
+
+
+
+@media only screen and (max-width: 767px) {
+    .hidden-img{
+        display: none;
+    }
+  }

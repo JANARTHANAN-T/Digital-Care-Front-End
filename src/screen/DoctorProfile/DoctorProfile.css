@@ -1,0 +1,55 @@
+.schedule-btn{
+    background-color: #ff7300;
+    color: white;
+    font-weight: 500;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 18px;
+    
+}
+
+.schedule-btn-1{
+    background-color: #1385ae;
+    color: white;
+    font-weight: 500;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 18px;
+    
+}
+
+.schedule-form-wrapper{
+    z-index: 20;
+    position:fixed;
+    top: 0;
+    --bs-bg-opacity: .7;
+    margin-top: 5vh;
+    height: 90vh;
+    width: 85vw;
+}
+
+.certificate{
+    height: 280px;
+    width: 100%;
+}
+
+.slot-booked{
+    background-color: #fdab67;
+    color: rgb(1, 1, 1);
+    border-radius: 10px;
+}
+
+.slot-not-booked{
+    background-color: rgb(206, 254, 132);
+    border-radius: 10px;
+}
+
+.day{
+    background-color: #1385ae;
+    color: white;
+
+}
+
+.calender{
+    font-size: small;
+}

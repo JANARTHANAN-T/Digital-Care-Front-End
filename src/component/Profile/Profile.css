@@ -1,0 +1,15 @@
+.profile{
+    position:fixed;
+    top:0px;
+    width: 250px;
+    z-index: 20;
+    --bs-bg-opacity: .93;
+    transition: all 1s;
+}
+.hide{
+    right: -250px;
+    cursor: pointer;
+}
+.show{
+    right: 0px;
+}

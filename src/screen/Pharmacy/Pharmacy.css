@@ -1,0 +1,14 @@
+.label{
+    padding: 10px;
+     background-color:#1385ae;
+    display: table;
+    color: #fff;
+    border-radius: 5px;
+}
+
+input[type="file"] {
+    display: none;
+}
+.wrap{
+    flex-wrap:wrap;
+}

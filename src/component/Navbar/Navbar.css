@@ -1,0 +1,17 @@
+.active{
+    color: #ff7300 !important;
+}
+
+.nav-link{
+    font-weight: 500;
+    font-size: large;
+}
+
+.logo-text{
+    color:#1385ae;
+    font-weight: 400;
+}
+
+.pointer{
+    cursor: pointer;
+}

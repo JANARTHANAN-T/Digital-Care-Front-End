@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a08c1a6c.css",
+    "main.js": "/static/js/main.13b9c252.js",
+    "static/js/787.006fb97a.chunk.js": "/static/js/787.006fb97a.chunk.js",
+    "static/media/banner-doctors.png": "/static/media/banner-doctors.c0373b4da0f5939c1be1.png",
+    "static/media/contactus.png": "/static/media/contactus.16d9eebc78d17de556b3.png",
+    "static/media/logo.png": "/static/media/logo.4716aa5ae4547c8f660d.png",
+    "static/media/chatbot.png": "/static/media/chatbot.2952e18860b86f3c3cc8.png",
+    "static/media/login.png": "/static/media/login.88e52d99143c116e948d.png",
+    "static/media/nodata.png": "/static/media/nodata.41e39c05fa07e8d3e041.png",
+    "static/media/specility.png": "/static/media/specility.2729240507c7545689d1.png",
+    "static/media/choosedoc-1.png": "/static/media/choosedoc-1.efe9c4fa98692a93235f.png",
+    "static/media/buy-medicine.png": "/static/media/buy-medicine.b0b484217c3f92ef6e3d.png",
+    "static/media/doc-online1.png": "/static/media/doc-online1.5456daab0ac84fed26e9.png",
+    "index.html": "/index.html",
+    "main.a08c1a6c.css.map": "/static/css/main.a08c1a6c.css.map",
+    "main.13b9c252.js.map": "/static/js/main.13b9c252.js.map",
+    "787.006fb97a.chunk.js.map": "/static/js/787.006fb97a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a08c1a6c.css",
+    "static/js/main.13b9c252.js"
+  ]
+}
