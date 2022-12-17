@@ -1,11 +1,23 @@
-import React , {useState} from 'react'
+import React , {useState,useEffect} from 'react'
 import './Navbar.css'
 import logo from '../../assert/image/logo.png'
 import { NavLink, Link } from 'react-router-dom'
 import Profile from '../Profile/Profile'
 
-function Navbar() {
-    const user=1
+async function Navbar() {
+    // const [user,setUser]=useState(null)
+    // useEffect(()=>{
+    //     var hospital=hospital
+    //     console.log(hospital)
+    //     setUser(hospital)
+    // },[])
+    // useEffect(()=>{
+    //     // var hospital=JSON.parse(localStorage.getItem("hospital"))
+    //     // setUser(hospital)
+    //     console.log(user)
+    // },[user])
+    const user=JSON.parse(localStorage.getItem("hospital"))
+    console.log(user)
     const [onProfile,setOnProfile]=useState(false)
     const toggleProfile=()=>{
         setOnProfile(!onProfile)
@@ -26,17 +38,21 @@ function Navbar() {
                         <li className="nav-item">
                             <NavLink to="/" className="nav-link mx-4">Home</NavLink>
                         </li>
+                        {user &&
                         <li className="nav-item">
                             <NavLink to="/doctors" className="nav-link mx-4">Doctors</NavLink>
                         </li>
+                        }
+                        {user &&
                         <li className="nav-item">
                             <NavLink to="/logs" className="nav-link mx-4">Logs</NavLink>
                         </li>
+                        }
                         <li className="nav-item">
-                        {user==null?
-                            <Link to='/auth' style={{textDecoration: 'none'}}>
-                            <div  className="nav-link mx-4" style={{color:'#1385ae'}}>Login/Register</div>
-                            </Link>
+                        {!user?
+                            
+                            <div  className="nav-link mx-4" style={{color:'#1385ae'}}><span className='fs-6 mx-2'>Are you the hospital?  </span><Link to='/auth' style={{textDecoration: 'none',color:'#1385ae'}}>Login/Register    </Link></div>
+                        
                         :   <div onClick={toggleProfile} class="nav-link mx-4 pointer" style={{color:'#1385ae'}}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-building-fill-add" viewBox="0 0 16 16">
                                 <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Z"/>

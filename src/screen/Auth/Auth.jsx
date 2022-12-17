@@ -1,11 +1,64 @@
 import React, {useState} from 'react'
 import './Auth.css'
+import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 import login from '../../assert/image/login.png'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Auth() {
+    const navigate = useNavigate();
     const [log,setLogin]=useState(true)
+    const [password,setPassword]=useState()
+    const [email,setEmail]=useState()
+    const [name,setName]=useState('')
+    const [address,setAddress]=useState()
+    const [cpassword,setCpassword]=useState()
+    const [phone,setPhone]=useState()
+
+    const handleSignUp = async(e) =>{
+        e.preventDefault()
+        if(password===cpassword){
+            await axios({
+              method: 'post',
+              url: 'http://localhost:8080/hospital/signup',
+              data: {name,email,phone,address,password}
+            }).then(
+              (res)=>{
+                localStorage.setItem("hospital", JSON.stringify(res.data.result));
+                toast("You have successfully registered!!!")
+                navigate("/")
+            }
+            ).catch((err)=>{
+              console.log(err)
+              toast(err.message)
+            })
+          }else{
+            toast('Invalid Creditials: Check Password')
+          }
+    }
+
+    const handleLogin = async(e) =>{
+        e.preventDefault()
+        
+            await axios({
+              method: 'post',
+              url: 'http://localhost:8080/hospital/login',
+              data: {email,password}
+            }).then(
+              (res)=>{
+                localStorage.setItem("hospital", JSON.stringify(res.data.result));
+                toast("You have successfully logged In !!!")
+                navigate("/")
+            }
+            ).catch((err)=>{
+              console.log(err)
+              toast("Check Your Creditials: Your Not Found")
+            })
+    }
   return (
     <div className='container'>
+     <ToastContainer />
         <div className="row my-3 d-flex align-items-center">
             <div className="col-md-6">
                 <img src={login} className="img-fluid hidden-img" alt='login' />
@@ -18,13 +71,13 @@ function Auth() {
                 <div className="card shadow p-1">
                     <div className="card-body">
                         <label htmlFor='email' className='form-label fs-5'>Email <span className='text-danger'>*</span></label>
-                        <input type="text" className='form-control' placeholder='Email' id='email' />
+                        <input type="text" className='form-control' placeholder='Email' id='email' value={email} onChange={(e)=>setEmail(e.target.value)} />
                         <label htmlFor='password' className='form-label fs-5 mt-3'>Password <span className='text-danger'>*</span></label>
-                        <input type="password" className='form-control' placeholder='password' id='password' />
+                        <input type="password" className='form-control' placeholder='password' id='password' value={password} onChange={(e)=>setPassword(e.target.value)} />
                         <div className='d-flex justify-content-end'>
                             <button className='btn'>forget password</button>
                         </div>
-                        <button className='btn btn-login'>LogIn</button>
+                        <button className='btn btn-login' onClick={handleLogin}>LogIn</button>
                     </div>
                 </div>
                 <div className='my-4 text-center'>
@@ -38,24 +91,24 @@ function Auth() {
                 <div className="card shadow p-1">
                     <div className="card-body">
                         <label htmlFor='name' className='form-label fs-5'>Hospital Name <span className='text-danger'>*</span></label>
-                        <input type="text" className='form-control' placeholder='Name' id='name ' />
+                        <input type="text" className='form-control' placeholder='Name' id='name ' value={name} onChange={(e)=>setName(e.target.value)} />
                         <label htmlFor='email' className='form-label fs-5 mt-3'>Email <span className='text-danger'>*</span></label>
-                        <input type="text" className='form-control' placeholder='Email' id='email' />
+                        <input type="text" className='form-control' placeholder='Email' id='email' value={email} onChange={(e)=>setEmail(e.target.value)} />
                         <label htmlFor='mobile' className='form-label fs-5 mt-3'>Contact Number <span className='text-danger'>*</span></label>
-                        <input type="text" className='form-control' placeholder='Mobile Number' id='mobile' />
+                        <input type="text" className='form-control' placeholder='Mobile Number' id='mobile' value={phone} onChange={(e)=>setPhone(e.target.value)} />
                         <label htmlFor='role' className='form-label fs-5 mt-3'>Address <span className='text-danger'>*</span></label>
-                        <textarea name="" id="" className='form-control'></textarea>
+                        <textarea name="" id="" className='form-control' value={address} onChange={(e)=>setAddress(e.target.value)}></textarea>
                         <div className="row">
                             <div className="col-md-6">
                             <label htmlFor='password' className='form-label fs-5 mt-3'>Password <span className='text-danger'>*</span></label>
-                            <input type="password" className='form-control' placeholder='6-10 character' id='password' />
+                            <input type="password" className='form-control' placeholder='6-10 character' id='password' value={password} onChange={(e)=>setPassword(e.target.value)} />
                         </div>
                         <div className="col-md-6">
                             <label htmlFor='confirm-password' className='form-label fs-5 mt-3'>Confirm Password <span className='text-danger'>*</span></label>
-                            <input type="password" className='form-control' placeholder='6-10 character' id='confirm-password' />
+                            <input type="password" className='form-control' placeholder='6-10 character' id='confirm-password' value={cpassword} onChange={(e)=>setCpassword(e.target.value)} />
                         </div>
                         </div>
-                        <button className='btn btn-login'>Sign Up</button>
+                        <button className='btn btn-login' onClick={handleSignUp}>Sign Up</button>
                         </div>
                         </div>
                        

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './Home.css'
 import bannerdoctors from '../../assert/image/banner-doctors.png'
 import icon1 from '../../assert/image/icon-1.png'
@@ -14,15 +14,22 @@ import buymedicine from '../../assert/image/buy-medicine.png'
 import { NavLink, Link } from 'react-router-dom'
 import ChatBot from "../ChatBot/ChatBot";
 import BotButton from "../../component/BotButton/BotButton";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function Home() {
+  useEffect(() => {
+    toast("Welcome To Digital Care !!!")
+  });
   return (
     <div>
     {/* Landing Page */}
     <Link to='/bot'>
               <BotButton />
         </Link>
+        <ToastContainer />
       <div className="landing-page row px-5 pt-5 d-flex align-items-center mx-0">
         <div className="col-md-6 ">
           <div >
