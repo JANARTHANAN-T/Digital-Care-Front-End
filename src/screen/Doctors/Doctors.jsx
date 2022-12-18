@@ -5,7 +5,8 @@ import "./Doctors.css";
 
 function Doctors() {
   const user = JSON.parse(localStorage.getItem("hospital"));
-  console.log(user);
+  const [search,setSearch] = useState()
+  
   return (
     <div className="container">
       <div>
@@ -16,6 +17,8 @@ function Doctors() {
             placeholder="Specialisation"
             aria-label="Recipient's username"
             aria-describedby="button-addon2"
+            value={search}
+            onChange={(e)=>setSearch(e.target.value)}
           />
           <button
             className="btn btn-outline-secondary"
