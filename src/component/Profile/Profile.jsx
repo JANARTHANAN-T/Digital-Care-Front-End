@@ -1,11 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Profile.css'
 
 function Profile() {
+  const navigate = useNavigate();
   const close =()=>{
     document.getElementById('profile').classList.remove('show');
     document.getElementById('profile').classList.add('hide');
+  }
+
+  const handleLogout = () =>{
+    close()
+    localStorage.removeItem('hospital')
+    navigate('/auth')
   }
   return (
     <div id='profile' className='vh-100 profile bg-dark text-light show'>
@@ -24,7 +31,7 @@ function Profile() {
         <Link to='/hospital/edit'>
         <button className='btn btn-outline-light m-4  '>Edit</button>
         </Link>
-        <button className='btn btn-outline-light m-4  '>LogOut</button>
+        <button className='btn btn-outline-light m-4  ' onClick={handleLogout}>LogOut</button>
     </div>
   )
 }

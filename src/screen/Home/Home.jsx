@@ -127,7 +127,7 @@ function Home() {
           <img src={specility} className="icon" alt="" />
         </div>
         <div className='col-sm-10 px-4'>
-            <div className='heading-1'>Choose a hospitals</div>
+            <div className='heading-1'>Choose hospitals</div>
             <p>Choose a hospitals based on the medical condition you have. If you are unsure, you can consult with a general physician to guide you through your health condition.</p>
         </div>
       </div>
@@ -145,7 +145,7 @@ function Home() {
           <img src={doconline} className="icon" alt="" />
         </div>
         <div className='col-sm-10 px-4'>
-            <div className='heading-1'>Booking online </div>
+            <div className='heading-1'>Book online </div>
             <p>Consult a doctor online either through chat, audio call, or video call and address your health problems. Apart from medical advice, the doctor will also give lifestyle tips for your condition.</p>
         </div>
       </div>
@@ -155,7 +155,7 @@ function Home() {
         </div>
         <div className='col-sm-10 px-4'>
             <div className='heading-1'>Reduce paper works</div>
-            <p>You can buy medicines online through our app and get them delivered to your doorstep, all without you having to step out of home.</p>
+            <p>Minute access to doctors and care giver's  and give the best of medical facilities to the patient. Patient's medical history allows him/her to take steps to reduce his or her risk. keeping a track of a patient’s medical health history saves valuable time</p>
         </div>
       </div>
       </div>

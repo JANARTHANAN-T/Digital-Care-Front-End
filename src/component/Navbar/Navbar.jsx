@@ -1,23 +1,11 @@
-import React , {useState,useEffect} from 'react'
+import React , {useState} from 'react'
 import './Navbar.css'
 import logo from '../../assert/image/logo.png'
 import { NavLink, Link } from 'react-router-dom'
 import Profile from '../Profile/Profile'
 
-async function Navbar() {
-    // const [user,setUser]=useState(null)
-    // useEffect(()=>{
-    //     var hospital=hospital
-    //     console.log(hospital)
-    //     setUser(hospital)
-    // },[])
-    // useEffect(()=>{
-    //     // var hospital=JSON.parse(localStorage.getItem("hospital"))
-    //     // setUser(hospital)
-    //     console.log(user)
-    // },[user])
-    const user=JSON.parse(localStorage.getItem("hospital"))
-    console.log(user)
+function Navbar() {
+    const user=JSON.parse(localStorage.getItem('hospital'))
     const [onProfile,setOnProfile]=useState(false)
     const toggleProfile=()=>{
         setOnProfile(!onProfile)
@@ -38,18 +26,18 @@ async function Navbar() {
                         <li className="nav-item">
                             <NavLink to="/" className="nav-link mx-4">Home</NavLink>
                         </li>
-                        {user &&
+                        {user!=null &&
                         <li className="nav-item">
                             <NavLink to="/doctors" className="nav-link mx-4">Doctors</NavLink>
                         </li>
                         }
-                        {user &&
+                        {user!=null &&
                         <li className="nav-item">
                             <NavLink to="/logs" className="nav-link mx-4">Logs</NavLink>
                         </li>
                         }
                         <li className="nav-item">
-                        {!user?
+                        {user==null?
                             
                             <div  className="nav-link mx-4" style={{color:'#1385ae'}}><span className='fs-6 mx-2'>Are you the hospital?  </span><Link to='/auth' style={{textDecoration: 'none',color:'#1385ae'}}>Login/Register    </Link></div>
                         
