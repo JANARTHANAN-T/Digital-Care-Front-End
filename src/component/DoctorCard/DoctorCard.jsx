@@ -23,19 +23,51 @@ function DoctorCard({e,i}) {
           }).then(
             (res)=>{
               localStorage.setItem("hospital", JSON.stringify(res.data));
-              toast("Doctor Profile is available")
+              toast("Doctor Profile is made to available")
               navigate("/doctors")
           }
           ).catch((err)=>{
             console.log(err)
             toast(err.message)
-          })
-        
+          }) 
       }
 
-      const handleDelete = () =>{
-        
+      const handleDelete = async(event) => {
+        event.preventDefault()
+        console.log(e._id)
+        await axios({
+            method: 'get',
+            url: `http://localhost:8080/hospital/delete/${e._id}/${user._id}`,
+          }).then(
+            (res)=>{
+              localStorage.setItem("hospital", JSON.stringify(res.data));
+              toast("Doctor Profile is deleted")
+              navigate("/doctors")
+          }
+          ).catch((err)=>{
+            console.log(err)
+            toast(err.message)
+          }) 
       }
+
+      const handleCancel = async(event) => {
+        event.preventDefault()
+        console.log(e._id)
+        await axios({
+            method: 'get',
+            url: `http://localhost:8080/hospital/cancel/${e._id}/${user._id}`,
+          }).then(
+            (res)=>{
+              localStorage.setItem("hospital", JSON.stringify(res.data));
+              toast("Doctor Profile is made to not available")
+              navigate("/doctors")
+          }
+          ).catch((err)=>{
+            console.log(err)
+            toast(err.message)
+          }) 
+      }
+
   return (
             <div className="card--doctor row" key={i}>
              <ToastContainer />
@@ -111,10 +143,10 @@ function DoctorCard({e,i}) {
                     Make Available
                   </button> :
                   <button
-                    className="btn schedule-btn mt-3 px-5"
-                    onClick={handleSubmit}
+                    className="btn schedule-btn btn-cancel mt-3 px-5"
+                    onClick={handleCancel}
                   >
-                    Change Available
+                    Cancel Available
                   </button>
                   }
                 </div>

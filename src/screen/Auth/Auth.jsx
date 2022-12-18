@@ -15,6 +15,7 @@ function Auth() {
     const [address,setAddress]=useState()
     const [cpassword,setCpassword]=useState()
     const [phone,setPhone]=useState()
+    const [district,setDistrict]=useState()
 
     const handleSignUp = async(e) =>{
         e.preventDefault()
@@ -22,7 +23,7 @@ function Auth() {
             await axios({
               method: 'post',
               url: 'http://localhost:8080/hospital/signup',
-              data: {name,email,phone,address,password}
+              data: {name,email,phone,address,password,district}
             }).then(
               (res)=>{
                 localStorage.setItem("hospital", JSON.stringify(res.data.result));
@@ -94,8 +95,16 @@ function Auth() {
                         <input type="text" className='form-control' placeholder='Name' id='name ' value={name} onChange={(e)=>setName(e.target.value)} />
                         <label htmlFor='email' className='form-label fs-5 mt-3'>Email <span className='text-danger'>*</span></label>
                         <input type="text" className='form-control' placeholder='Email' id='email' value={email} onChange={(e)=>setEmail(e.target.value)} />
-                        <label htmlFor='mobile' className='form-label fs-5 mt-3'>Contact Number <span className='text-danger'>*</span></label>
-                        <input type="text" className='form-control' placeholder='Mobile Number' id='mobile' value={phone} onChange={(e)=>setPhone(e.target.value)} />
+                        <div className="row">
+                            <div className="col-md-6">
+                                <label htmlFor='mobile' className='form-label fs-5 mt-3'>Contact Number <span className='text-danger'>*</span></label>
+                                <input type="text" className='form-control' placeholder='Mobile Number' id='mobile' value={phone} onChange={(e)=>setPhone(e.target.value)} />
+                            </div>
+                            <div className="col-md-6">
+                            <label htmlFor='mobile' className='form-label fs-5 mt-3'>District <span className='text-danger'>*</span></label>
+                                <input type="text" className='form-control' placeholder='Mobile Number' id='mobile' value={district} onChange={(e)=>setDistrict(e.target.value)} />
+                            </div>
+                        </div>
                         <label htmlFor='role' className='form-label fs-5 mt-3'>Address <span className='text-danger'>*</span></label>
                         <textarea name="" id="" className='form-control' value={address} onChange={(e)=>setAddress(e.target.value)}></textarea>
                         <div className="row">
@@ -108,7 +117,7 @@ function Auth() {
                             <input type="password" className='form-control' placeholder='6-10 character' id='confirm-password' value={cpassword} onChange={(e)=>setCpassword(e.target.value)} />
                         </div>
                         </div>
-                        <button className='btn btn-login' onClick={handleSignUp}>Sign Up</button>
+                        <button className='btn btn-login mt-4' onClick={handleSignUp}>Sign Up</button>
                         </div>
                         </div>
                        
