@@ -1,12 +1,29 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import DoctorCard from "../../component/DoctorCard/DoctorCard";
 import "./Doctors.css";
 
 function Doctors() {
-  const user = JSON.parse(localStorage.getItem("hospital"));
-  const [search,setSearch] = useState()
+  const getData = async()=>{
+    const user = JSON.parse(localStorage.getItem("hospital"));
+    setDoctors(user.doctors)
+  }
   
+  const [doctors,setDoctors]=useState([])
+  const [search,setSearch] = useState('')
+    useEffect(()=>{
+        if(search.length){
+          const data=doctors.filter(d=>d.name.toLowerCase().includes(search.toLowerCase()))
+            setDoctors(data)
+
+        }else{
+          getData()
+        }
+    },[search])
+    useEffect(()=>{
+      getData()
+    },[])
   return (
     <div className="container">
       <div>
@@ -14,7 +31,7 @@ function Doctors() {
           <input
             type="text"
             className="form-control"
-            placeholder="Specialisation"
+            placeholder="Doctor name"
             aria-label="Recipient's username"
             aria-describedby="button-addon2"
             value={search}
@@ -41,7 +58,7 @@ function Doctors() {
           </Link>
         </div>
         <div className="container">
-          {user.doctors.map((e, i) => {
+          {doctors?.map((e, i) => {
             return (
               <DoctorCard e={e} i={i} />
             );

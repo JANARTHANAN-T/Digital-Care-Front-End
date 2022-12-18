@@ -1,19 +1,30 @@
 class MessageParser {
-  constructor(actionProvider) {
+  constructor(actionProvider, state) {
     this.actionProvider = actionProvider;
+    this.state = state;
   }
 
-  parse(message) {
-    console.log(message);
-    const lowercase = message.toLowerCase();
 
-    if (lowercase.includes("hello")) {
-      this.actionProvider.greet();
+  parse(message) {
+    const lowercase = message.toLowerCase()
+    if(lowercase.includes('hi') || lowercase.includes('hello')){
+      return this.actionProvider.greet();
+    }
+    if(lowercase.includes('your name')){
+      console.log('hiii');
+      return this.actionProvider.name()
     }
 
-    // if (lowercase.includes("javascript") || lowercase.includes("js")) {
-    //   this.actionProvider.handleJavascriptQuiz();
+    if(lowercase.includes('your age')){
+      console.log('hiii');
+      return this.actionProvider.age()
+    }
+
+
+    // if(lowercase.includes("todos")){
+    //   this.actionProvider.todosHandler()
     // }
+    this.actionProvider.answer(message)
   }
 }
 

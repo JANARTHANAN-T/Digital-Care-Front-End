@@ -1,33 +1,48 @@
+import { toHaveFocus } from "@testing-library/jest-dom/dist/matchers";
+
+import axios from "axios";
 class ActionProvider {
-   constructor(createChatBotMessage,setStateFunc,createClientMessage,stateRef,createCustomMessage,...rest) {
-    this.createChatBotMessage = createChatBotMessage;
-    this.setState = setStateFunc;
-    this.createClientMessage = createClientMessage;
-    this.stateRef = stateRef;
-    this.createCustomMessage = createCustomMessage;
-  }
-   
-  greet=()=>{
-    const message=this.createChatBotMessage("Hello friend.")
-    this.addMessageToState(message)
-  }
+    constructor(createChatBotMessage,setStateFunc){
+     this.createChatBotMessage = createChatBotMessage;
+     this.setState = setStateFunc;
+   }
+  //  greet=() =>{
+  //   const message = this.createChatBotMessage("hello ,karthi,Lucky")
+  //   this.setChatbotMessage(message)
+  //  }
 
-  handleJavascriptQuiz = () => {
-    const message = this.createChatBotMessage(
-      "Fantastic. Here is your quiz. Good luck!",
-      {
-        widget: "javascriptQuiz",
+   setChatbotMessage = (message) =>{
+    this.setState(state =>({...state,messages:[...state.messages,message]}) )
+   }
+
+   name = async()=>{
+    const sendMessage=this.createChatBotMessage('My name is Digital')
+    this.setChatbotMessage(sendMessage)
+   }
+
+   greet=async()=>{
+    const sendMessage=this.createChatBotMessage('Hello ask your question')
+    this.setChatbotMessage(sendMessage)
+   }
+
+   age=async()=>{
+    const sendMessage=this.createChatBotMessage('Im a bot,🤣🤣 i have no life')
+    this.setChatbotMessage(sendMessage)
+   }
+     
+      answer =async (message) =>{
+        // const {data} =await axios.post('http://localhost:5000/chatbot/',{message})
+        // var snippets = data["knowledge_graph"]?.description
+        // if(snippets?.length == 0){
+        //   snippets = data["related_questions"].map(d => <li key={d.link}>{d.snippet}</li>)
+        // }
+        
+        const sendMessage=this.createChatBotMessage(`By DigitalBot`,{widget:"answer"})
+        this.setChatbotMessage(sendMessage)
+
       }
-    );
 
-    this.addMessageToState(message);
-  }
 
-  addMessageToState=(message)=>{
-    this.setState(prevState =>  ({
-        ...prevState, messages:[...prevState.messages, message]
-    }))
-  }
-}
-
-export default ActionProvider;
+ }
+ 
+ export default ActionProvider;
